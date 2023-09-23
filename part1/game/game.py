@@ -48,6 +48,5 @@ class Game:
                 p = [(x + self.width/2, y + self.height/4) for x, y in p]
                 pg.draw.polygon(self.screen, (0, 255, 0), p, 1)
 
-
         pg.display.flip()
 
