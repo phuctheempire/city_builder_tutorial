@@ -1,7 +1,7 @@
 
 import pygame as pg
 import random
-import noise
+#import noise
 from .settings import TILE_SIZE
 
 
@@ -51,17 +51,17 @@ class World:
         miny = min([y for x, y in iso_poly])
 
         r = random.randint(1, 100)
-        perlin = 100 * noise.pnoise2(grid_x/self.perlin_scale, grid_y/self.perlin_scale)
+        '''perlin = 100 * noise.pnoise2(grid_x/self.perlin_scale, grid_y/self.perlin_scale)
 
         if (perlin >= 15) or (perlin <= -35):
             tile = "tree"
+        else:'''
+        if r == 1:
+            tile = "tree"
+        elif r == 2:
+            tile = "rock"
         else:
-            if r == 1:
-                tile = "tree"
-            elif r == 2:
-                tile = "rock"
-            else:
-                tile = ""
+            tile = ""
 
         out = {
             "grid": [grid_x, grid_y],
