@@ -10,7 +10,7 @@ class Game:
         self.screen = screen
         self.clock = clock
         self.width, self.height = self.screen.get_size()
-        self.world = World(10, 10, self.width, self.height)
+        self.world = World(10, 10, self.width, self.height) # Initialize the world
 
     def run(self):
         self.playing = True
@@ -34,12 +34,12 @@ class Game:
         pass
 
     def draw(self):
-        self.screen.fill((0, 0, 0))
+        #self.screen.fill( (137, 207, 240)) #fill the screen with a color
+        
+        self.screen.blit(self.world.grass_tiles , (0, 0)) #pg.surface to be self.world.grass_tiles, coordinates to be (0, 0)
 
-        self.screen.blit(self.world.grass_tiles, (0, 0))
-
-        for x in range(self.world.grid_length_x):
-            for y in range(self.world.grid_length_y):
+        for x in range(self.world.grid_length_x): # 10
+            for y in range(self.world.grid_length_y): # 10
 
                 # sq = self.world.world[x][y]["cart_rect"]
                 # rect = pg.Rect(sq[0][0], sq[0][1], TILE_SIZE, TILE_SIZE)
@@ -47,12 +47,16 @@ class Game:
 
                 render_pos =  self.world.world[x][y]["render_pos"]
                 #self.screen.blit(self.world.tiles["block"], (render_pos[0] + self.width/2, render_pos[1] + self.height/4))
+                # the render position of the coordinate x, y of the world ( world is a dictionary)
+
 
                 tile = self.world.world[x][y]["tile"]
+                # call for random tile 
                 if tile != "":
-                    self.screen.blit(self.world.tiles[tile],
+                    self.screen.blit(self.world.tiles[tile], # in the class World: self.tiles = self.load_images()
                                     (render_pos[0] + self.width/2,
                                      render_pos[1] + self.height/4 - (self.world.tiles[tile].get_height() - TILE_SIZE)))
+                    # draw 
 
                 # p = self.world.world[x][y]["iso_poly"]
                 # p = [(x + self.width/2, y + self.height/4) for x, y in p]
