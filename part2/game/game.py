@@ -10,7 +10,6 @@ class Game:
         self.screen = screen
         self.clock = clock
         self.width, self.height = self.screen.get_size()
-
         self.world = World(10, 10, self.width, self.height)
 
     def run(self):

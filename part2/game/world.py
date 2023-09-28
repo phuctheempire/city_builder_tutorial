@@ -6,23 +6,23 @@ from .settings import TILE_SIZE
 
 
 class World:
-
+    #grid_length is the total length of the grid
     def __init__(self, grid_length_x, grid_length_y, width, height):
         self.grid_length_x = grid_length_x
         self.grid_length_y = grid_length_y
         self.width = width
         self.height = height
 
-        self.grass_tiles = pg.Surface((width, height))
-        self.tiles = self.load_images()
-        self.world = self.create_world()
+        self.grass_tiles = pg.Surface((width, height)) #create a surface
+        self.tiles = self.load_images() #dictionary of images
+        self.world = self.create_world() #world to be a double list
 
     def create_world(self):
 
         world = []
 
         for grid_x in range(self.grid_length_x):
-            world.append([])
+            world.append([]) # initiate an empty list then let grid_x runf 
             for grid_y in range(self.grid_length_y):
                 world_tile = self.grid_to_world(grid_x, grid_y)
                 world[grid_x].append(world_tile)
